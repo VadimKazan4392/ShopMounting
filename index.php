@@ -1,6 +1,7 @@
 <?php
 define('VG_ACCESS', true);
 
+
 header('Content-type:text\html;charset=utf-8');
 
 session_start();
@@ -12,7 +13,7 @@ use \core\base\controllers\RouteController;
 use \core\base\exceptions\RouteException;
 
 try {
-    RouteController::getInstance();
+    RouteController::getInstance()->route();
 } catch(RouteException $e) {
     exit($e->getMessage());
 }
