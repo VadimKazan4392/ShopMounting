@@ -6,7 +6,7 @@ const SITE_URL = 'http://shop';
 const PATH = '/';
 
 const HOST = 'localhost';
-const USER = 'root';
-const PASS = '';
-const DB_NAME = 'shop';
+const USER = 'pahan';
+const PASS = '1234rs';
+const DB_NAME = 'shop2';
 

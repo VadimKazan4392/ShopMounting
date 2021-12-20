@@ -4,7 +4,7 @@ namespace core\base\exceptions;
 use core\base\controllers\BaseMethods;
 use Exception;
 
-class RouteException extends Exception
+class DBException extends Exception
 {
     protected $messages;
 
@@ -20,10 +20,10 @@ class RouteException extends Exception
 
         $error .= "\r\n" . 'file ' . $this->getFile() . "\r\n" . 'In line' . $this->getLine() . "\r\n";
 
-        if($this->messages[$this->getCode()]) {
-            $this->message = $this->messages[$this->getCode()];
-        }
+        // if($this->messages[$this->getCode()]) {
+        //     $this->message = $this->messages[$this->getCode()];
+        // }
 
-        $this->writeLog($error);
+        $this->writeLog($error, 'db_log.txt');
     }
 }

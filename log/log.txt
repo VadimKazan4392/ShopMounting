@@ -1,0 +1,16 @@
+Fault:22-11-21 23:26:01-не корректная директория сайта
+file /var/www/html/shop/core/base/controllers/RouteController.php
+In line101
+
+Fault:22-11-21 23:26:01-не корректная директория сайта
+file /var/www/html/shop/core/base/controllers/RouteController.php
+In line101
+
+Fault:06-12-21 21:01:55-не корректная директория сайта
+file /var/www/html/shop/core/base/controllers/RouteController.php
+In line101
+
+Fault:06-12-21 21:06:08-не корректная директория сайта
+file /var/www/html/shop/core/base/controllers/RouteController.php
+In line101
+

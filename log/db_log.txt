@@ -1,0 +1,24 @@
+Fault:07-12-21 22:24:06-Ошибка подключения к базе данных1698 Access denied for user 'root'@'localhost'
+file /var/www/html/shop/core/base/models/BaseModel.php
+In line20
+
+Fault:07-12-21 22:54:16-Ошибка в SQL-запросеSELECT * FROM article1-1146Table 'shop2.article1' doesn't exist
+file /var/www/html/shop/core/base/models/BaseModel.php
+In line34
+
+Fault:07-12-21 22:55:17-Ошибка в SQL-запросеSELECT * FROM article1-1146Table 'shop2.article1' doesn't exist
+file /var/www/html/shop/core/base/models/BaseModel.php
+In line34
+
+Fault:07-12-21 22:57:54-Ошибка в SQL-запросеSELECT * FROM article1-1146Table 'shop2.article1' doesn't exist
+file /var/www/html/shop/core/base/models/BaseModel.php
+In line34
+
+Fault:07-12-21 22:59:03-Ошибка в SQL-запросеSELECT * FROM article1-0
+file /var/www/html/shop/core/base/models/BaseModel.php
+In line34
+
+Fault:07-12-21 22:59:32-Ошибка в SQL-запросеSELECT * FROM article1-1146Table 'shop2.article1' doesn't exist
+file /var/www/html/shop/core/base/models/BaseModel.php
+In line34
+

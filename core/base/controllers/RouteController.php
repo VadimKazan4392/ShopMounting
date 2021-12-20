@@ -3,15 +3,11 @@ namespace core\base\controllers;
 
 use core\base\exceptions\RouteException;
 use core\base\settings\Settings;
-use core\base\settings\ShopSettings;
 
 class RouteController extends BaseController
 {
-    static private  $_instance;
-
-
-
-
+    use Singletone;
+    
     private function __construct()
     {
         $adress_str = $_SERVER['REQUEST_URI'];
@@ -26,7 +22,7 @@ class RouteController extends BaseController
 
             $this->routes = Settings::get('routes');
 
-            if (!$this->routes) throw new RouteException('Сайт находится на техническом обслуживании');
+            if (!$this->routes) throw new RouteException('Отсутствуют маршруты в базовых настройках', 1);
 
             $url = explode('/', substr($adress_str, strlen(PATH)));
 
@@ -67,46 +63,42 @@ class RouteController extends BaseController
                         $route = 'admin';
                     }
 
-                } else {
+                } 
+           } else {
 
-                    $hrUrl = $this->routes['user']['hrUrl'];
+            $hrUrl = $this->routes['user']['hrUrl'];
 
-                    $this->controller = $this->routes['user']['path'];
+            $this->controller = $this->routes['user']['path'];
 
-                    $route = 'user';
-                }
+            $route = 'user';
+        }
 
-                $this->createRoute($route, $url);
+        $this->createRoute($route, $url);
 
-                if ($url[1]) {
+        if ($url[1]) {
 
-                    $count = count($url);
-                    $key = '';
+            $count = count($url);
+            $key = '';
 
-                    if (!$hrUrl) {
-                        $i = 1;
-                    } else {
-                        $this->parametres['alias'] = $url[1];
-                        $i = 2;
-                    }
-
-                    for (; $i < $count; $i++) {
-                        if (!$key) {
-                            $key = $url[$i];
-                            $this->parametres[$key] = '';
-                        } else {
-                            $this->parametres[$key] = $url[$i];
-                            $key = '';
-                        }
-                    }
-                }
-           }
-        }else {
-            try {
-                throw new \Exception('не корректная директория сайта');
-            } catch (\Exception $e) {
-                exit($e->getMessage());
+            if (!$hrUrl) {
+                $i = 1;
+            } else {
+                $this->parametres['alias'] = $url[1];
+                $i = 2;
             }
+
+            for (; $i < $count; $i++) {
+                if (!$key) {
+                    $key = $url[$i];
+                    $this->parametres[$key] = '';
+                } else {
+                    $this->parametres[$key] = $url[$i];
+                    $key = '';
+                }
+            }
+        }
+        }else {
+            throw new RouteException('не корректная директория сайта', 1);
         }
     }
 
@@ -130,19 +122,5 @@ class RouteController extends BaseController
         $this->outputMethod = $route[2] ? $route[2] : $this->routes['default']['outputMethod'];
 
         return;
-    }
-
-    private function __clone()
-    {
-        
-    }
-
-    static public function getInstance()
-    {
-        if(self::$_instance instanceof self) {
-            return self::$_instance;
-        }
-
-        return self::$_instance = new self;
     }
 }
